@@ -419,7 +419,7 @@ class RedBeatScheduler(Scheduler):
             # peek into the next tick to accuratly calculate sleep between ticks
             pipe.zrangebyscore(
                 self.app.redbeat_conf.schedule_key,
-                '({}'.format(max_due_at),
+                max_due_at + 1,
                 max_due_at + self.max_interval,
                 start=0,
                 num=1,
